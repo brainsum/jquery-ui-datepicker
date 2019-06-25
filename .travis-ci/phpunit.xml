@@ -15,7 +15,7 @@
     </php>
     <testsuites>
         <testsuite name="tieto-modules">
-            <directory>./web/modules/contrib/tieto_modules</directory>
+            <directory>./web/modules/contrib/jquery_ui_datepicker</directory>
         </testsuite>
     </testsuites>
     <listeners>
