@@ -1,0 +1,29 @@
+{
+    "name": "brainsum/jquery_ui_datepicker",
+    "description": "Datetime fieldwidget using jQuery UI datepicker",
+    "type": "drupal-module",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "mhavelant",
+            "email": "mhavelant@brainsum.com"
+        }
+    ],
+    "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    },
+    "require": {
+        "php": "^7.2",
+        "drupal/core": "^8.4"
+    },
+    "extra": {
+        "patches": {
+            "drupal/core": {
+                "Datetime form element cannot validate when using a format without seconds" : "https://www.drupal.org/files/issues/2723159-43.patch"
+            }
+        }
+    }
+}
