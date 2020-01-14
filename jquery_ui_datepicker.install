@@ -11,3 +11,16 @@
 function jquery_ui_datepicker_install() {
   module_set_weight('jquery_ui_datepicker', 10);
 }
+
+/**
+ * Implements hook_update_N().
+ */
+function jquery_ui_datepicker_update_8801(array &$sandbox) {
+  $moduleConf = Drupal::configFactory()->getEditable('jquery_ui_datepicker.settings');
+  $currentFormat = $moduleConf->get('date_format');
+
+  if (empty($currentFormat)) {
+    $moduleConf->set('date_format', 'medium');
+    $moduleConf->save();
+  }
+}

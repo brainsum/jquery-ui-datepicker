@@ -267,18 +267,16 @@ function jquery_ui_datepicker_form_views_exposed_form_alter(array &$form) {
   if (isset($form['#id']) && $form['#id'] === 'views-exposed-form-content-content-overview') {
     $form['#attached']['library'][] = 'jquery_ui_datepicker/datepicker';
 
-    /** @var \Drupal\Core\Datetime\DateFormatInterface $tieto_date */
-    $tieto_date = Drupal::entityTypeManager()->getStorage('date_format')->load('tieto_date');
-    $pattern = _date_format_parse($tieto_date->getPattern());
+    $config = Drupal::config('jquery_ui_datepicker.settings');
 
-    $created_min = &$form['exposed_form']['created_min'];
-    $created_max = &$form['exposed_form']['created_max'];
+    /** @var \Drupal\Core\Datetime\DateFormatInterface $dateFormat */
+    $dateFormat = Drupal::entityTypeManager()->getStorage('date_format')->load($config->get('date_format'));
+    $pattern = _date_format_parse($dateFormat->getPattern());
 
-    $created_min['#type'] = 'textfield';
-    $created_min['#date_date_format'] = $pattern['date'];
-
-    $created_max['#type'] = 'textfield';
-    $created_max['#date_date_format'] = $pattern['date'];
+    $form['exposed_form']['created_min']['#type'] = 'textfield';
+    $form['exposed_form']['created_min']['#date_date_format'] = $pattern['date'];
+    $form['exposed_form']['created_max']['#type'] = 'textfield';
+    $form['exposed_form']['created_max']['#date_date_format'] = $pattern['date'];
 
     $form['#attached']['drupalSettings']['jquery_ui_datepicker']['created_min'] = [
       'dateFormat' => _date_format_to_jquery_format($pattern['date']),

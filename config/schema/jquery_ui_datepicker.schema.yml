@@ -1,0 +1,7 @@
+jquery_ui_datepicker.settings:
+  type: config_object
+  label: "JQuery UI Datepicker settings"
+  mapping:
+    date_format:
+      type: string
+      label: "Date format for the Datepicker widget"
