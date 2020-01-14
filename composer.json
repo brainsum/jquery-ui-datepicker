@@ -17,12 +17,12 @@
     },
     "require": {
         "php": "^7.2",
-        "drupal/core": "^8.4"
+        "drupal/core": "^8.8"
     },
     "extra": {
         "patches": {
             "drupal/core": {
-                "Datetime form element cannot validate when using a format without seconds" : "https://www.drupal.org/files/issues/2723159-43.patch"
+                "Datetime form element cannot validate when using a format without seconds": "https://www.drupal.org/files/issues/2019-07-24/drupal-datetime_form_element_cannot_validate_without_seconds-2723159-53.patch"
             }
         }
     }

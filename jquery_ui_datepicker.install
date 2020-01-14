@@ -9,5 +9,5 @@
  * Implements hook_install().
  */
 function jquery_ui_datepicker_install() {
-  \module_set_weight('jquery_ui_datepicker', 10);
+  module_set_weight('jquery_ui_datepicker', 10);
 }
