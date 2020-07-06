@@ -116,7 +116,7 @@ class JQueryUIDatePickerWidget extends DateTimeDefaultWidget {
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $element = parent::formElement($items, $delta, $element, $form, $form_state);
 
-    $form['#attached']['library'][] = 'jquery_ui_datepicker/datepicker';
+    $form['#attached']['library'][] = 'jquery_ui_datepicker/timepicker';
     $element['value']['#jqdp'] = TRUE;
 
     $dateName = $this->fieldDefinition->getName() . '[' . $delta . ']' . '[value][date]';

@@ -5,7 +5,6 @@
  * JQuery UI Datepicker module.
  */
 
-use Drupal\Core\Datetime\Element\Datetime;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Datetime\Entity\DateFormat;
 
@@ -13,25 +12,7 @@ use Drupal\Core\Datetime\Entity\DateFormat;
  * Implements hook_element_info_alter().
  */
 function jquery_ui_datepicker_element_info_alter(array &$types) {
-  $types['datetime']['#pre_render'][] = 'jquery_ui_datepicker_element_pre_render';
-}
-
-/**
- * Adds timezone information to datetime element.
- */
-function jquery_ui_datepicker_element_pre_render($element) {
-  if (!empty($element['#jqdp'])) {
-    $element['timezone'] = [
-      '#type' => 'html_tag',
-      '#tag' => 'span',
-      '#value' => Datetime::formatExample('T'),
-      '#attributes' => [
-        'title' => t('The date in the timezone of your account.'),
-      ],
-    ];
-  }
-
-  return $element;
+  $types['datetime']['#pre_render'][] = '\Drupal\jquery_ui_datepicker\Callback\DateTimeDatepicker::preRender';
 }
 
 /**
@@ -265,7 +246,7 @@ function _jquery_get_time_format(array $element): string {
  */
 function jquery_ui_datepicker_form_views_exposed_form_alter(array &$form) {
   if (isset($form['#id']) && $form['#id'] === 'views-exposed-form-content-content-overview') {
-    $form['#attached']['library'][] = 'jquery_ui_datepicker/datepicker';
+    $form['#attached']['library'][] = 'jquery_ui_datepicker/timepicker';
 
     $config = Drupal::config('jquery_ui_datepicker.settings');
 

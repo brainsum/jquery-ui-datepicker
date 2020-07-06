@@ -1,8 +1,11 @@
 name: 'jQuery UI Datepicker'
 type: module
 description: 'Datetime fieldwidget using jQuery UI datepicker'
-core: 8.x
+
+core_version_requirement: ^8.8 || ^9
+
 package: Field types
 
 dependencies:
   - drupal:datetime
+  - jquery_ui:jquery_ui
